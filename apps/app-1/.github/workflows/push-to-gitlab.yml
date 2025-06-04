@@ -1,0 +1,27 @@
+name: Push to GitLab
+
+on:
+  push:
+    branches:
+        - main
+
+jobs:
+  push-to-gitlab:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "JoaquinGrez"
+          git config user.email "joaco@tether.education"
+
+      - name: Set GitLab remote
+        run: git remote set-url origin "https://oauth2:${{ secrets.JUNJI_GITLAB_ACCESS_TOKEN }}@gitprod.junji.gob.cl/sim-multipostulador/applications-front.git"
+
+      - name: Push to GitLab
+        run: git push origin ${{ github.ref_name }}

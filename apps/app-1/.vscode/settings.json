@@ -1,0 +1,29 @@
+{
+  "cSpell.language": "en,es",
+  "cSpell.words": [
+    "airbnb",
+    "classname",
+    "composables",
+    "fontsource",
+    "intlify",
+    "isotype",
+    "luxon",
+    "pinia",
+    "stylelint",
+    "vuejs",
+    "vueuse"
+  ],
+  "editor.formatOnSave": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.rulers": [
+    100
+  ],
+  "json.format.enable": true,
+  "[vue]": {
+    "editor.tabSize": 2,
+    "editor.indentSize": "tabSize"
+  },
+  "turboConsoleLog.logMessagePrefix": "🚀 [CRM]",
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        ".env.staging.local",
+        ".env.production.local",
+        ".env.local",
+        ".env.staging",
+        ".env.production",
+        ".env"
+      ],
+      "outputs": ["dist/**"],
+      "outputLogs": "new-only"
+    },
+    "lint": {
+      "inputs": [
+        "$TURBO_DEFAULT$",
+        "$TURBO_ROOT$/packages/eslint/configs/**/*.js"
+      ],
+      "outputLogs": "new-only",
+      "dependsOn": ["^build"]
+    }
+  }
+}

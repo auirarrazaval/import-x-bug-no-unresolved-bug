@@ -1,0 +1,70 @@
+name: Configuration
+
+on:
+  pull_request:
+    branches:
+        - develop
+        - staging
+        - main
+  workflow_dispatch:
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    name: Setup
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn
+  lint:
+    runs-on: ubuntu-latest
+    name: Lint
+    needs: setup
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: run lint
+        run: yarn lint:eslint
+  build:
+    runs-on: ubuntu-latest
+    name: Build
+    needs: setup
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - name: Install dependencies
+        run: yarn
+
+      - name: run build
+        run: yarn build
