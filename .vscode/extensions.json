@@ -1,0 +1,9 @@
+{
+    "recommendations": [
+        "vercel.turbo-vsc",
+        "vue.volar",
+        "christian-kohler.path-intellisense",
+        "folke.vscode-monorepo-workspace",
+        "steoates.autoimport"
+    ]
+}
